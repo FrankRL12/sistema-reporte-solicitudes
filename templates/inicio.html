@@ -1,0 +1,92 @@
+{% extends 'templates/base.html' %} 
+
+
+{% load static %}
+
+{% block content %}
+<div class="container p-3">
+    <div class="card">
+        <div class="card-body">
+        <a href="{% url 'reportar' %}" class="btn btn-danger">Reportar</a>
+        <a href="{% url 'solicitar' %}" class="btn btn-primary">Solicitar</a>
+        <a href="{% url 'historial_usuario' %}" class="btn btn-secondary">Historial</a>
+            <h1 class="card-title">Bienvenido: {{ user.username }}!</h1>
+            <h2>Nombre completo: {{ user.get_full_name }}</h2>
+            <h3>Correo electrónico: {{ user.email }}</h3>
+        </div>
+        <h1 class="text-center p-3">Historial de solicitudes y reportes</h1>
+        {% if reportes %}
+    <div class="container table-responsive p-3">
+        <table class="table table-striped table-warning table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Cargo</th>
+                    <th>Nombre completo</th>
+                    <th>Ubicación</th>
+                    <th>Tipo de equipo</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reporte in reportes %}
+                    <tr>
+                        <td>{{ reporte.id }}</td>
+                        <td>{{ reporte.cargo }}</td>
+                        <td>{{ reporte.nombre_completo }}</td>
+                        <td>{{ reporte.ubicacion }}</td>
+                        <td>{{ reporte.tipo_equipo }}</td>
+                        <td>{{ reporte.descripcion }}</td>
+                        <td>{{ reporte.estado }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+<div class="container">
+    <div class="text-center alert alert-success" role="alert">
+        No se han registrado reportes todavía.
+    </div> 
+</div> 
+{% endif %}
+{% if solicitudes %}
+    <div class="container table-responsive p-3">
+        <table class="table table-striped table-warning table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Cargo</th>
+                    <th>Nombre completo</th>
+                    <th>Ubicación</th>
+                    <th>Mantenimiento</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solicitud in solicitudes %}
+                    <tr>
+                        <td>{{ solicitud.id }}</td>
+                        <td>{{ solicitud.cargo }}</td>
+                        <td>{{ solicitud.nombre_completo }}</td>
+                        <td>{{ solicitud.ubicacion }}</td>
+                        <td>{{ solicitud.mantenimiento }}</td>
+                        <td>{{ solicitud.estado }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+<div class="container">
+    <div class="text-center alert alert-success" role="alert">
+        No se han realizado solicitudes todavía.
+    </div> 
+</div> 
+{% endif %}
+
+    </div>    
+</div>
+
+{% endblock content %}

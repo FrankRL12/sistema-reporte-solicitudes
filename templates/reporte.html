@@ -1,0 +1,49 @@
+{% extends 'templates/base.html' %} 
+
+
+{% load static %}
+
+{% block content %}
+<section class="container  p-3">
+  <div class="card border">
+    <div class="card-body">
+      <form method="post" action="" class="container">
+        {% csrf_token %}
+        <h1>Reporte</h1>
+        <div class="form-group">
+          <label for="cargo">Cargo</label>
+          <select class="form-control" id="cargo" name="cargo">
+            <option value="">Seleccione un cargo</option>
+            <option value="Docente">Docente</option>
+            <option value="Administrativo">Administrativo</option>
+            <option value="Jefe de Carrera">Jefe de Carrera</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" class="form-control" id="nombre" name="nombre_completo">
+        </div>
+        <div class="form-group">
+          <label for="ubicacion">Ubicación</label>
+          <select class="form-control" id="ubicacion" name="ubicacion">
+            <option value="">Seleccione un lugar</option>
+            <option value="Multiplataforma">Multiplataforma</option>
+            <option value="Base De Datos">Base De Datos</option>
+            <option value="Cisco">Cisco</option>
+            <option value="Control escolar">Control escolar</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tipo_equipo">Tipo de Equipo</label>
+          <input type="text" class="form-control" id="tipo_equipo" name="tipo_equipo">
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Reportar</button>
+      </form>
+    </div>
+  </div>  
+</section>
+{% endblock content %}

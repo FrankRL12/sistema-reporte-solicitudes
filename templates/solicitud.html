@@ -1,0 +1,52 @@
+{% extends 'templates/base.html' %} 
+
+
+{% load static %}
+
+{% block content %}
+<section class="container  p-3">
+    <div class="card border">
+        <div class="card-body">
+            <form method="post" action="" class="container">
+                {% csrf_token %}
+                <h1 class="card-title">Solicitud</h1>
+                <div class="form-group">
+                    <label for="cargo">Cargo</label>
+                    <select class="form-control" name="cargo" id="cargo">
+                        <option value="">Seleccione un cargo</option>
+                        <option value="Docente">Docente</option>
+                        <option value="Administrativo">Administrativo</option>
+                        <option value="Gefe de carrera">Jefe de Carrera</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nombre_completo">Nombre completo</label>
+                    <input type="text" name="nombre_completo" class="form-control" id="nombre_completo">
+                </div>
+                <div class="form-group">
+                    <label for="ubicacion">Ubicación</label>
+                    <select class="form-control" name="ubicacion" id="ubicacion">
+                        <option value="">Seleccione un lugar</option>
+                        <option value="multiplataforma">Multiplataforma</option>
+                        <option value="Base de Datos">Base De Datos</option>
+                        <option value="Cisco">Cisco</option>
+                        <option value="Control Escolar">Control escolar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mantenimiento">Mantenimiento</label>
+                    <select class="form-control" name="mantenimiento" id="mantenimiento">
+                        <option value="">Seleccione el mantenimiento</option>
+                        <option value="Soporte">Soporte</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Software">Software</option>
+                        <option value="Mantenimiento">Mantenimiento</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Solicitar</button>
+            </form>
+        </div>
+    </div>
+    
+</section>
+{% endblock content %}

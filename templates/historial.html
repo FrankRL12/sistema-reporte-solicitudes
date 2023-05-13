@@ -1,0 +1,48 @@
+{% extends 'templates/base.html' %} 
+
+
+{% load static %}
+
+{% block content %}
+
+<div class="container p-3">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Bienvenido: {{ user.username }}!</h1>
+            <h2>Nombre completo: {{ user.get_full_name }}</h2>
+            <h3>Correo electrónico: {{ user.email }}</h3>
+        </div>
+        <h1 class="text-center p-3">Historial de solicitudes y reportes</h1>
+        <div class="container">
+            <table>
+                <thead>
+                  <tr>
+                    <th>Cargo</th>
+                    <th>Ubicación</th>
+                    <th>Mantenimiento</th>
+                    <th>Tipo de equipo</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for registro in historial %}
+                    <tr>
+                      <td>{{ registro.cargo }}</td>
+                      <td>{{ registro.ubicacion }}</td>
+                      <td>{{ registro.mantenimiento }}</td>
+                      <td>{{ registro.tipo_equipo }}</td>
+                      <td>{{ registro.descripcion }}</td>
+                      <td>{{ registro.estado }}</td>
+                    </tr>
+                  {% empty %}
+                    <tr>
+                      <td colspan="6">No se encontraron registros de historial para este usuario.</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>    
+</div>
+{% endblock content %}
